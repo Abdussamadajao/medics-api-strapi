@@ -70,6 +70,12 @@
       "relation": "manyToMany",
       "target": "api::categorie.categorie",
       "mappedBy": "doctors"
+    },
+    "hospital": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hospital.hospital",
+      "inversedBy": "doctors"
     }
   }
 }

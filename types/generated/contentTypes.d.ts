@@ -749,6 +749,11 @@ export interface ApiDoctorDoctor extends Schema.CollectionType {
       'manyToMany',
       'api::categorie.categorie'
     >;
+    hospital: Attribute.Relation<
+      'api::doctor.doctor',
+      'manyToOne',
+      'api::hospital.hospital'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -773,6 +778,7 @@ export interface ApiHospitalHospital extends Schema.CollectionType {
     singularName: 'hospital';
     pluralName: 'hospitals';
     displayName: 'hospital';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -783,11 +789,6 @@ export interface ApiHospitalHospital extends Schema.CollectionType {
     image: Attribute.Media;
     email: Attribute.Email & Attribute.Required;
     website: Attribute.String;
-    phone: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<{
-        max: 10;
-      }>;
     categories: Attribute.Relation<
       'api::hospital.hospital',
       'manyToMany',
@@ -797,6 +798,14 @@ export interface ApiHospitalHospital extends Schema.CollectionType {
     opening_hours: Attribute.Time;
     closing_hours: Attribute.Time;
     opening_days: Attribute.String;
+    doctors: Attribute.Relation<
+      'api::hospital.hospital',
+      'oneToMany',
+      'api::doctor.doctor'
+    >;
+    state: Attribute.String;
+    city: Attribute.String;
+    phone: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

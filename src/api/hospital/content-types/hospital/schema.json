@@ -4,7 +4,8 @@
   "info": {
     "singularName": "hospital",
     "pluralName": "hospitals",
-    "displayName": "hospital"
+    "displayName": "hospital",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -20,14 +21,15 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "email": {
       "type": "email",
@@ -35,11 +37,6 @@
     },
     "website": {
       "type": "string"
-    },
-    "phone": {
-      "type": "integer",
-      "max": 10,
-      "required": true
     },
     "categories": {
       "type": "relation",
@@ -57,6 +54,21 @@
       "type": "time"
     },
     "opening_days": {
+      "type": "string"
+    },
+    "doctors": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::doctor.doctor",
+      "mappedBy": "hospital"
+    },
+    "state": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "phone": {
       "type": "string"
     }
   }
